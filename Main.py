@@ -29,12 +29,34 @@ class LinkedList:
         :param data: integer data that will be used to create a node
         """
         # Write code here
+        if index > self.length():
+			return "ERROR : index out of range!"
+		elif index == self.length():
+			self.append(data)
+			return "Node Added"
+		new_node = node(data)
+		idx = 0
+		cur = self.head
+		while cur.next != None:
+			last_node = cur
+			cur = cur.next
+			if idx == index:
+				last_node.next = new_node
+				new_node.next = cur
+				return "Node Added"
+			idx += 1
 
     def status(self):
         """
         It prints all the elements of list.
         """
         # write code here
+        elements = []
+		cur = self.head
+		while cur.next != None:
+			cur = cur.next
+			elements.append(cur.data)
+		return elements
 
 
 class Solution:
@@ -48,6 +70,34 @@ class Solution:
         :return: returns the sum as a linked list
         """
         # Write code here
+        if first_list is None:
+            first_list = 0
+        else:
+            first_list = first.data
+        if second_list is None:
+            secondData = 0
+        else:
+            secondData = second.data
+        Sum = carry
+        Sum += firstData
+        Sum += secondData
+        if Sum >= 10:
+            carry = 1
+        else:
+            carry = 0
+        Sum %= 10
+        temp = Node(Sum)
+        if self.head is None:
+            self.head = temp
+        else:
+            prev.next = temp
+        prev = temp
+        if first is not None:
+            first = first.next
+        if second is not None:
+            second = second.next
+    if carry > 0:
+        temp.next = Node(carry)
         
         
 
