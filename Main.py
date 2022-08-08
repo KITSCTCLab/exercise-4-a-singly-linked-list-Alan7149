@@ -30,21 +30,21 @@ class LinkedList:
         """
         # Write code here
         if index > self.length():
-			return "ERROR : index out of range!"
-		elif index == self.length():
-			self.append(data)
+		return "ERROR : index out of range!"
+	elif index == self.length():
+		self.append(data)
+		return "Node Added"
+	new_node = node(data)
+	idx = 0
+	cur = self.head
+	while cur.next != None:
+		last_node = cur
+		cur = cur.next
+		if idx == index:
+			last_node.next = new_node
+			new_node.next = cur
 			return "Node Added"
-		new_node = node(data)
-		idx = 0
-		cur = self.head
-		while cur.next != None:
-			last_node = cur
-			cur = cur.next
-			if idx == index:
-				last_node.next = new_node
-				new_node.next = cur
-				return "Node Added"
-			idx += 1
+		idx += 1
 
     def status(self):
         """
